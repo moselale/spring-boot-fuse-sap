@@ -7,12 +7,25 @@
 
     <!-- You could also define a traditional camel context here -->
     <!--
+    -->
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-        <route>
+       <route>
             <from uri="timer://foo?period=1000"/>
             <setBody><simple>Hello World from camel-context.xml</simple></setBody>
             <log message=">>> ${body}"/>
         </route>
+		 <route>
+	        <from uri="timer://init?repeatCount=1"/>
+		    <to uri="bean:request"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	        
+	        
+	    </route> <!-- -->
     </camelContext>
-    -->
+    
+	<!-- Instantiates a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
+	 	 and sets that request in the body of the exchange's message.  	-->
+	<bean id="request" class="io.fabric8.quickstarts.camel.CreateRequest"/>
 </beans>
