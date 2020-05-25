@@ -11,11 +11,11 @@
     <camelContext xmlns="http://camel.apache.org/schema/spring">
        <route>
             <from uri="timer://foo?period=1000"/>
-            <setBody><simple>Hello World from camel-context.xml</simple></setBody>
+            <setBody><simple>Hello World from camel-context.xml2</simple></setBody>
             <log message=">>> ${body}"/>
         </route>
 		 <route>
-	        <from uri="timer://init?repeatCount=1"/>
+	        <from uri="timer://foo?period=10000"/>
 		    <to uri="bean:request"/>
 	        <log message="${body}" loggingLevel="INFO"/>
 	        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>

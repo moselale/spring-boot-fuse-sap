@@ -28,6 +28,9 @@
         <!-- versions of Maven plugins -->
         <fabric8.maven.plugin.version>3.5.40</fabric8.maven.plugin.version>
         <fabric8.version>2.3.7</fabric8.version>
+        <arquillian.version>1.18.0</arquillian.version>
+        <arquillian-junit.version>1.6.0.Final</arquillian-junit.version>
+        <junit.version>4.12</junit.version>
 
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -156,10 +159,10 @@
         
 
         <!-- Test -->
-        <!-- <dependency>
+        <dependency>
             <groupId>org.arquillian.cube</groupId>
             <artifactId>arquillian-cube-openshift</artifactId>
-            <version>${spring-boot.version}</version>
+            <version>${arquillian.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
@@ -173,19 +176,20 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-            <version>${spring-boot.version}</version>
+            <version>${junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
-            <version>${spring-boot.version}</version>
+            <version>${arquillian-junit.version}</version>
         </dependency>
         <dependency>
             <groupId>io.fabric8</groupId>
             <artifactId>kubernetes-assertions</artifactId>
+            <version>${fabric8.version}</version>
             <scope>test</scope>
-        </dependency> -->
+        </dependency>
 
     </dependencies>
 
