@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -17,16 +16,17 @@
 
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
         <camel.version>2.21.2</camel.version>
-		<camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
+        <camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
         <!-- fusesource version -->
         <fusesource-version>7.6.0.fuse-760024-redhat-00001</fusesource-version>
         <!-- sap jco and jIDoc version -->
-		<sapjco3-version>3.0.11</sapjco3-version>
-		<sapidoc3-version>3.0.10</sapidoc3-version>
-		<camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
+        <sapjco3-version>3.0.11</sapjco3-version>
+        <sapidoc3-version>3.0.10</sapidoc3-version>
+        <camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
 
         <!-- versions of Maven plugins -->
         <fabric8.maven.plugin.version>3.5.40</fabric8.maven.plugin.version>
+        <exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
         <fabric8.version>2.3.7</fabric8.version>
         <arquillian.version>1.18.0</arquillian.version>
         <arquillian-junit.version>1.6.0.Final</arquillian-junit.version>
@@ -34,57 +34,57 @@
 
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        
-		<!-- SAP Instance Configuration Configuration Parameters -->
-		<!-- *** Please enter the connection property values for your SAP Instance *** -->
-		<jco.client.ashost>172.28.3.26</jco.client.ashost>
-		<jco.client.sysnr>11</jco.client.sysnr>
-		<jco.client.client>100</jco.client.client>
-		<jco.client.gwhost>example.com</jco.client.gwhost>
-		<jco.client.gwserv>3300</jco.client.gwserv>
-		<jco.client.user>sviluppo</jco.client.user>
-		<jco.client.passwd>pocredhat2020</jco.client.passwd>
-		<jco.client.lang>IT</jco.client.lang>
+
+        <!-- SAP Instance Configuration Configuration Parameters -->
+        <!-- *** Please enter the connection property values for your SAP Instance *** -->
+        <jco.client.ashost>172.28.3.26</jco.client.ashost>
+        <jco.client.sysnr>11</jco.client.sysnr>
+        <jco.client.client>100</jco.client.client>
+        <jco.client.gwhost>example.com</jco.client.gwhost>
+        <jco.client.gwserv>3300</jco.client.gwserv>
+        <jco.client.user>sviluppo</jco.client.user>
+        <jco.client.passwd>pocredhat2020</jco.client.passwd>
+        <jco.client.lang>IT</jco.client.lang>
     </properties>
 
     <!-- <dependencyManagement> -->
-        <dependencies>
-            <dependency>
-                <groupId>io.fabric8</groupId>
-                <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
-                <version>${fabric8.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-          <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-spring-boot-dependencies</artifactId>
-                <version>${camel.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>   <!---->
+    <dependencies>
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
+            <version>${fabric8.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${spring-boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-boot-dependencies</artifactId>
+            <version>${camel.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency> <!---->
         <!-- </dependencies>
     </dependencyManagement>
 
     <dependencies> -->
-        
-        
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core-starter</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
+
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core-starter</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
-			<version>${camel-version}</version>
+            <version>${camel-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -108,55 +108,55 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        
-		<!-- Camel dependencies -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-spring</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-blueprint</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jaxb</artifactId>
-			<version>${camel-version}</version>
-		</dependency>
-<!-- Sap -->
-		 <dependency>
-			<groupId>org.fusesource</groupId>
-			<artifactId>camel-sap</artifactId>
-			<version>${fusesource-version}</version>
+
+        <!-- Camel dependencies -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel-version}</version>
         </dependency>
-		<dependency>
-			<groupId>org.fusesource</groupId>
-			<artifactId>camel-sap-starter</artifactId>
-			<version>${fusesource-version}</version>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-blueprint</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+        <!-- Sap -->
+        <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>camel-sap</artifactId>
+            <version>${fusesource-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>camel-sap-starter</artifactId>
+            <version>${fusesource-version}</version>
         </dependency>
 
-		<dependency>
-			<groupId>com.sap.conn.jco</groupId>
-			<artifactId>sapjco3</artifactId>
-			<version>${sapjco3-version}</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/sapjco3.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>com.sap.conn.idoc</groupId>
-			<artifactId>sapidoc3</artifactId>
-			<version>${sapidoc3-version}</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
-		</dependency>
-        
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>sapjco3</artifactId>
+            <version>${sapjco3-version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/sapjco3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.sap.conn.idoc</groupId>
+            <artifactId>sapidoc3</artifactId>
+            <version>${sapidoc3-version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
+        </dependency>
+
 
         <!-- Test -->
         <dependency>
@@ -195,16 +195,16 @@
 
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/fabric8</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/fabric8</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
 
@@ -244,11 +244,11 @@
                 </executions>
             </plugin>
 
-			<plugin>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>camel-maven-plugin</artifactId>
-				<version>${camel-maven-plugin-version}</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <version>${camel-maven-plugin-version}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -316,7 +316,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
 
                 </plugins>
             </build>
