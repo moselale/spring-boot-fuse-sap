@@ -272,6 +272,52 @@
                         </executions>
                     </plugin>
 
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>${exec-maven-plugin.version}</version>
+                        <inherited>false</inherited>
+                        <executions>
+                            <execution>
+                                <id>install-jco</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>mvn</executable>
+                                    <arguments>
+                                        <argument>install:install-file</argument>
+                                        <argument>-Dfile=lib/sapjco3.jar</argument>
+                                        <argument>-DgroupId=com.sap.conn.jco</argument>
+                                        <argument>-DartifactId=sapjco3</argument>
+                                        <argument>-Dversion=${sapjco3-version}</argument>
+                                        <argument>-Dpackaging=jar</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-idoc</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>mvn</executable>
+                                    <arguments>
+                                        <argument>install:install-file</argument>
+                                        <argument>-Dfile=lib/sapidoc3.jar</argument>
+                                        <argument>-DgroupId=com.sap.conn.jco</argument>
+                                        <argument>-DartifactId=sapidoc3</argument>
+                                        <argument>-Dversion=${sapjco3-version}</argument>
+                                        <argument>-Dpackaging=jar</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+
                 </plugins>
             </build>
         </profile>
