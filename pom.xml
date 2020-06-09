@@ -314,12 +314,12 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal>
+                            <goal>run</goal>
                         </goals>
                         <configuration>
                           <includeSystemScope>true</includeSystemScope>
                           <!-- <addResources>true</addResources> -->
-                          <excludes>
+                          <!-- <excludes>
                               <exclude>
                                   <groupId>com.sap.conn.jco</groupId>
                                   <artifactId>sapjco3</artifactId>
@@ -328,7 +328,7 @@
                                   <groupId>com.sap.conn.idoc</groupId>
                                   <artifactId>sapidoc3</artifactId>
                               </exclude>
-                          </excludes>
+                          </excludes> -->
                         </configuration>
                     </execution>
                 </executions>
