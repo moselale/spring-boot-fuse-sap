@@ -314,7 +314,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>run</goal>
+                            <goal>repackage</goal>
                         </goals>
                         <configuration>
                           <includeSystemScope>true</includeSystemScope>
