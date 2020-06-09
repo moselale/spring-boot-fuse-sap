@@ -20,8 +20,8 @@
         <!-- fusesource version -->
         <fusesource-version>7.6.0.fuse-760024-redhat-00001</fusesource-version>
         <!-- sap jco and jIDoc version -->
-        <sapjco3-version>3.0.11</sapjco3-version>
-        <sapidoc3-version>3.0.10</sapidoc3-version>
+        <sapjco3-version>3.0.14</sapjco3-version>
+        <sapidoc3-version>3.0.12</sapidoc3-version>
         <camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
 
         <!-- versions of Maven plugins -->
@@ -145,18 +145,59 @@
         <dependency>
             <groupId>com.sap.conn.jco</groupId>
             <artifactId>sapjco3</artifactId>
-            <version>${sapjco3-version}</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/sapjco3.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.sap.conn.idoc</groupId>
-            <artifactId>sapidoc3</artifactId>
-            <version>${sapidoc3-version}</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
+            <version>3.1.2</version>
+            <type>jar</type>
+           <scope>system</scope> 
+             <systemPath>${basedir}/src/main/resources/lib/sapjco3.jar</systemPath>
         </dependency>
 
+         <dependency>
+            <groupId>com.sap.conn.idoc</groupId>
+            <artifactId>sapidoc3</artifactId>
+            <version>3.1.2</version>
+            <type>jar</type>
+             <scope>system</scope>
+           <systemPath>${basedir}/src/main/resources/lib/sapidoc3.jar</systemPath>
+        </dependency> 
+
+        <!-- https://mvnrepository.com/artifact/cn.yanzx-dev.gitlab/sapjco-spring-boot-starter-autoconfigure 
+<dependency>
+    <groupId>com.sap.conn.jco</groupId>
+    <artifactId>sapjco3</artifactId>
+    <version>3.0.14</version>
+</dependency>
+
+<dependency>
+    <groupId>com.sap.conn.idoc</groupId>
+    <artifactId>sapidoc3</artifactId>
+    <version>3.0.12</version>
+</dependency>-->
+
+
+
+<!-- 
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>libsapjco3</artifactId>
+            <version>3.0.14</version>
+        </dependency> -->
+
+        <!-- <dependency>
+            <groupId>com.sap.jco</groupId>
+            <artifactId>sapjco</artifactId>
+            <version>3.0.11</version>
+            <scope>system</scope> 
+            <systemPath>${basedir}/lib/sapjco3.jar</systemPath>
+        </dependency>
+            
+        <dependency>
+            <groupId>com.sap.xonn.jco</groupId>
+            <artifactId>sapidoc</artifactId>
+            <version>3.0.10</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
+        </dependency>  -->
+ 
 
         <!-- Test -->
         <dependency>
@@ -191,6 +232,19 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -215,8 +269,30 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <!-- <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive> -->
                 </configuration>
             </plugin>
+<!-- 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <packageName>src.main.java</packageName>
+                        </manifest>
+                        <manifestEntries>
+                            <Created-By>andrisil</Created-By>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin> -->
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -240,6 +316,20 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
+                        <configuration>
+                          <includeSystemScope>true</includeSystemScope>
+                          <!-- <addResources>true</addResources> -->
+                          <excludes>
+                              <exclude>
+                                  <groupId>com.sap.conn.jco</groupId>
+                                  <artifactId>sapjco3</artifactId>
+                              </exclude>
+                              <exclude>
+                                  <groupId>com.sap.conn.idoc</groupId>
+                                  <artifactId>sapidoc3</artifactId>
+                              </exclude>
+                          </excludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -271,6 +361,39 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <!-- <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifact>
+                                            <groupId>com.sap.conn.jco</groupId>
+                                            <artifactId>sapjco3</artifactId>
+                                            <version>3.0.14</version>
+                                            <type>jar</type>
+                                            <stripVersion>true</stripVersion>                    
+                                            <destFileName>sapjco3</destFileName>
+                                           </artifact>
+                                        <artifact>
+                                            <groupId>com.sap.conn.idoc</groupId>
+                                            <artifactId>sapidoc3</artifactId>
+                                            <version>3.0.12</version>
+                                            <type>jar</type>
+                                            <stripVersion>true</stripVersion>                     
+                                            <destFileName>sapidoc3</destFileName>
+                                          </artifact>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin> -->
 
                     <!-- <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -322,27 +445,12 @@
         </profile>
     </profiles>
 
-    <!-- <pluginRepositories>
-        <pluginRepository>
-            <id>redhat-ga-repository</id>
-            <url>https://maven.repository.redhat.com/ga</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>redhat-ea-repository</id>
-            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories> -->
+
+    <repositories>
+        <repository>
+            <id>lib</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository> 
+    </repositories> 
 
 </project>

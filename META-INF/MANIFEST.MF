@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Built-By: andrisil
+Created-By: Maven Integration for Eclipse
+Main-Class: src.main.java.io.fabric8.quickstarts.camel.Application.MainClass
+Class-Path:  lib/sapjco3.jar lib/libsapjco3.so lib/sapidoc3.jar
