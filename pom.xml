@@ -17,11 +17,13 @@
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
         <camel.version>2.21.2</camel.version>
         <camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
+        
         <!-- fusesource version -->
         <fusesource-version>7.6.0.fuse-760024-redhat-00001</fusesource-version>
+
         <!-- sap jco and jIDoc version -->
-        <sapjco3-version>3.0.14</sapjco3-version>
-        <sapidoc3-version>3.0.12</sapidoc3-version>
+        <sapjco3-version>3.1.2</sapjco3-version>
+        <sapidoc3-version>3.1.2</sapidoc3-version>
         <camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
 
         <!-- versions of Maven plugins -->
@@ -36,7 +38,6 @@
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
         <!-- SAP Instance Configuration Configuration Parameters -->
-        <!-- *** Please enter the connection property values for your SAP Instance *** -->
         <jco.client.ashost>172.28.3.26</jco.client.ashost>
         <jco.client.sysnr>11</jco.client.sysnr>
         <jco.client.client>100</jco.client.client>
@@ -47,7 +48,6 @@
         <jco.client.lang>IT</jco.client.lang>
     </properties>
 
-    <!-- <dependencyManagement> -->
     <dependencies>
         <dependency>
             <groupId>io.fabric8</groupId>
@@ -69,12 +69,7 @@
             <version>${camel.version}</version>
             <type>pom</type>
             <scope>import</scope>
-        </dependency> <!---->
-        <!-- </dependencies>
-    </dependencyManagement>
-
-    <dependencies> -->
-
+        </dependency> 
 
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -90,12 +85,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
-            <!-- <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions> -->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -130,6 +119,7 @@
             <artifactId>camel-jaxb</artifactId>
             <version>${camel-version}</version>
         </dependency>
+
         <!-- Sap -->
         <dependency>
             <groupId>org.fusesource</groupId>
@@ -145,7 +135,7 @@
         <dependency>
             <groupId>com.sap.conn.jco</groupId>
             <artifactId>sapjco3</artifactId>
-            <version>3.1.2</version>
+            <version>${sapjco3-version}</version>
             <type>jar</type>
            <scope>system</scope> 
              <systemPath>${basedir}/src/main/resources/lib/sapjco3.jar</systemPath>
@@ -154,50 +144,11 @@
          <dependency>
             <groupId>com.sap.conn.idoc</groupId>
             <artifactId>sapidoc3</artifactId>
-            <version>3.1.2</version>
+            <version>${sapidoc3-version}</version>
             <type>jar</type>
              <scope>system</scope>
            <systemPath>${basedir}/src/main/resources/lib/sapidoc3.jar</systemPath>
         </dependency> 
-
-        <!-- https://mvnrepository.com/artifact/cn.yanzx-dev.gitlab/sapjco-spring-boot-starter-autoconfigure 
-        <dependency>
-            <groupId>com.sap.conn.jco</groupId>
-            <artifactId>sapjco3</artifactId>
-            <version>3.0.14</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sap.conn.idoc</groupId>
-            <artifactId>sapidoc3</artifactId>
-            <version>3.0.12</version>
-        </dependency>-->
-
-
-
-<!-- 
-        <dependency>
-            <groupId>com.sap.conn.jco</groupId>
-            <artifactId>libsapjco3</artifactId>
-            <version>3.0.14</version>
-        </dependency> -->
-
-        <!-- <dependency>
-            <groupId>com.sap.jco</groupId>
-            <artifactId>sapjco</artifactId>
-            <version>3.0.11</version>
-            <scope>system</scope> 
-            <systemPath>${basedir}/lib/sapjco3.jar</systemPath>
-        </dependency>
-            
-        <dependency>
-            <groupId>com.sap.xonn.jco</groupId>
-            <artifactId>sapidoc</artifactId>
-            <version>3.0.10</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
-        </dependency>  -->
- 
 
         <!-- Test -->
         <dependency>
@@ -269,30 +220,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <!-- <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                        </manifest>
-                    </archive> -->
+                    
                 </configuration>
             </plugin>
-<!-- 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <packageName>src.main.java</packageName>
-                        </manifest>
-                        <manifestEntries>
-                            <Created-By>andrisil</Created-By>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin> -->
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -317,19 +247,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                          <includeSystemScope>false</includeSystemScope>
-                        <!-- <addResources>true</addResources> -->
-                          <!-- <excludes>
-                              <exclude>
-                                  <groupId>com.sap.conn.jco</groupId>
-                                  <artifactId>sapjco3</artifactId>
-                              </exclude>
-                              <exclude>
-                                  <groupId>com.sap.conn.idoc</groupId>
-                                  <artifactId>sapidoc3</artifactId>
-                              </exclude>
-                          </excludes> -->
-                         </configuration> 
+                            <includeSystemScope>true</includeSystemScope>
+                        </configuration> 
                     </execution>
                 </executions>
             </plugin>
@@ -362,95 +281,9 @@
                         </executions>
                     </plugin>
 
-                    <!-- <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>3.1.2</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifact>
-                                            <groupId>com.sap.conn.jco</groupId>
-                                            <artifactId>sapjco3</artifactId>
-                                            <version>3.0.14</version>
-                                            <type>jar</type>
-                                            <stripVersion>true</stripVersion>                    
-                                            <destFileName>sapjco3</destFileName>
-                                           </artifact>
-                                        <artifact>
-                                            <groupId>com.sap.conn.idoc</groupId>
-                                            <artifactId>sapidoc3</artifactId>
-                                            <version>3.0.12</version>
-                                            <type>jar</type>
-                                            <stripVersion>true</stripVersion>                     
-                                            <destFileName>sapidoc3</destFileName>
-                                          </artifact>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin> -->
-
-                    <!-- <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>${exec-maven-plugin.version}</version>
-                        <inherited>false</inherited>
-                        <executions>
-                            <execution>
-                                <id>install-jco</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <executable>mvn</executable>
-                                    <arguments>
-                                        <argument>install:install-file</argument>
-                                        <argument>-Dfile=lib/sapjco3.jar</argument>
-                                        <argument>-DgroupId=com.sap.conn.jco</argument>
-                                        <argument>-DartifactId=sapjco3</argument>
-                                        <argument>-Dversion=${sapjco3-version}</argument>
-                                        <argument>-Dpackaging=jar</argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-idoc</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <executable>mvn</executable>
-                                    <arguments>
-                                        <argument>install:install-file</argument>
-                                        <argument>-Dfile=lib/sapidoc3.jar</argument>
-                                        <argument>-DgroupId=com.sap.conn.jco</argument>
-                                        <argument>-DartifactId=sapidoc3</argument>
-                                        <argument>-Dversion=${sapjco3-version}</argument>
-                                        <argument>-Dpackaging=jar</argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin> -->
-
                 </plugins>
             </build>
         </profile>
     </profiles>
-
-
-    <repositories>
-        <repository>
-            <id>lib</id>
-            <url>file://${project.basedir}/lib</url>
-        </repository> 
-    </repositories> 
 
 </project>

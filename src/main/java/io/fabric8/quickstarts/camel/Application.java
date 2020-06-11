@@ -31,16 +31,4 @@ public class Application /* extends RouteBuilder */ {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-    /* @GetMapping("/greeting")
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	} */
-
-    /* @Override
-    public void configure() throws Exception {
-        from("timer://foo?period=5000")
-            .setBody().constant("Hello World")
-            .log(">>> ${body}");
-    } */
 }
