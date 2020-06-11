@@ -17,7 +17,7 @@
         <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
         <camel.version>2.21.2</camel.version>
         <camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
-        
+
         <!-- fusesource version -->
         <fusesource-version>7.6.0.fuse-760024-redhat-00001</fusesource-version>
 
@@ -244,7 +244,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>run</goal>
+                            <goal>repackage</goal>
                         </goals>
                         <configuration>
                             <includeSystemScope>true</includeSystemScope>
