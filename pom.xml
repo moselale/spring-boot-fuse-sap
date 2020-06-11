@@ -314,10 +314,10 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>run</goal>
+                            <goal>repackage</goal>
                         </goals>
                         <configuration>
-                          <includeSystemScope>true</includeSystemScope>
+                          <includeSystemScope>false</includeSystemScope>
                         <!-- <addResources>true</addResources> -->
                           <!-- <excludes>
                               <exclude>
