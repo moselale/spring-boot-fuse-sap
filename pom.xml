@@ -247,11 +247,35 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <includeSystemScope>true</includeSystemScope>
+                            <!-- <includeSystemScope>true</includeSystemScope> -->
+                            <excludes>
+                                <exclude>
+                                  <groupId>com.sap.conn.jco</groupId>
+                                  <artifactId>sapjco3</artifactId>
+                                </exclude>
+                                <exclude>
+                                  <groupId>com.sap.conn.idoc</groupId>
+                                  <artifactId>sapidoc3</artifactId>
+                                </exclude>
+                            </excludes>
                         </configuration> 
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                  <archive>
+                    <manifest>
+                      <addClasspath>true</addClasspath>
+                      <classpathPrefix>lib/</classpathPrefix>
+                      <classpathLayoutType>repository</classpathLayoutType>
+                    </manifest>
+                  </archive>
+                </configuration>
+              </plugin>
 
             <plugin>
                 <groupId>org.apache.camel</groupId>
@@ -277,6 +301,42 @@
                                     <goal>resource</goal>
                                     <goal>build</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.sap.conn.jco</groupId>
+                                            <artifactId>sapjco3</artifactId>
+                                            <version>3.0.14</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${basedir}/src/main/resources/lib/</outputDirectory>
+                                            <!-- <stripVersion>true</stripVersion>                     -->
+                                            <destFileName>sapjco3.jar</destFileName>
+                                           </artifactItem>
+                                        <artifactItem>
+                                            <groupId>com.sap.conn.idoc</groupId>
+                                            <artifactId>sapidoc3</artifactId>
+                                            <version>3.0.12</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${basedir}/src/main/resources/lib/</outputDirectory>
+                                            <!-- <stripVersion>true</stripVersion>                      -->
+                                            <destFileName>sapidoc3.jar</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
