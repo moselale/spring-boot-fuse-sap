@@ -247,7 +247,7 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <!-- <includeSystemScope>true</includeSystemScope> -->
+                            <includeSystemScope>true</includeSystemScope>
                             <excludes>
                                 <exclude>
                                   <groupId>com.sap.conn.jco</groupId>
