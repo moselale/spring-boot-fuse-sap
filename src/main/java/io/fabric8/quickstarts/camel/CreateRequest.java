@@ -15,10 +15,10 @@
  * 
  */
 package io.fabric8.quickstarts.camel;
-
+/* 
 import org.apache.camel.Exchange;
 import org.fusesource.camel.component.sap.SapSynchronousRfcDestinationEndpoint;
-import org.fusesource.camel.component.sap.model.rfc.Structure;
+import org.fusesource.camel.component.sap.model.rfc.Structure; */
 
 /**
  * A {@link CreateRequest} is a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
@@ -29,19 +29,16 @@ import org.fusesource.camel.component.sap.model.rfc.Structure;
  */
 public class CreateRequest {
 
-	public void createRequest(Exchange exchange) throws Exception {
+	/*public void createRequest(Exchange exchange) throws Exception {
 
-		// Create a request message from the endpoint to the GetList method of the FlightCustomer BAPI
-		SapSynchronousRfcDestinationEndpoint endpoint = exchange.getContext().getEndpoint("sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST", SapSynchronousRfcDestinationEndpoint.class);
+		 SapSynchronousRfcDestinationEndpoint endpoint = exchange.getContext().getEndpoint("sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST", SapSynchronousRfcDestinationEndpoint.class);
 		Structure request = endpoint.createRequest();
 		
-		// Add query parameters to the request to retrieve upto 10 Customer records including Web Users.
 		request.put("CUSTOMER_NAME", "*");
 		request.put("MAX_ROWS", 10);
 		request.put("WEB_USER", "*");
 		
-		// Set the request in in the body of the exchange's message.
-		exchange.getIn().setBody(request);
-	}
+		exchange.getIn().setBody(request); 
+	}*/
 
 }

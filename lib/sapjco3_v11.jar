@@ -1,0 +1,16 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Jun 15 09:05:37 PDT 2020
+file\:///home/silvandrici/sap/spring-boot-camel/lib/.error=
+https\://repo1.maven.org/maven2/.error=
+http\://maven.mit.edu/nexus/content/repositories/public/.error=
+http\://maven.mit.edu/nexus/content/repositories/public/.lastUpdated=1592237136828
+https\://maven.repository.redhat.com/earlyaccess/all/.lastUpdated=1592237132944
+https\://repository.jboss.org/nexus/content/groups/public/.error=
+https\://repo1.maven.org/maven2/.lastUpdated=1592237130131
+http\://maven.repository.redhat.com/ga/.error=
+https\://maven.repository.redhat.com/earlyaccess/all/.error=
+https\://repository.jboss.org/nexus/content/groups/public/.lastUpdated=1592237134808
+https\://repo.maven.apache.org/maven2/.lastUpdated=1592237137917
+file\:///home/silvandrici/sap/spring-boot-camel/lib/.lastUpdated=1591878873832
+https\://repo.maven.apache.org/maven2/.error=
+http\://maven.repository.redhat.com/ga/.lastUpdated=1592237132132

@@ -1,0 +1,24 @@
+
+**** Error file opened at 20200616 010549 Pacific Daylight Time Rel. 3.0.14 (2015-12-16) [753.512]
+Error:  >Tue Jun 16 01:05:49,384<    RfcException:
+    message: Connect to SAP gateway failed
+Connection parameters: TYPE=A DEST=quickstartDest ASHOST=172.28.3.26 SYSNR=11 PCS=1
+
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '172.28.3.26:3311' not reached
+TIME        Tue Jun 16 01:05:49 2020
+RELEASE     753
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      /bas/753_REL/src/base/ni/nixxi.cpp
+LINE        3449
+DETAIL      NiPConnect2: 172.28.3.26:3311
+SYSTEM CALL connect
+ERRNO       111
+ERRNO TEXT  Connessione rifiutata
+COUNTER     2
+
+    return code: RFC_FAILURE (1)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION

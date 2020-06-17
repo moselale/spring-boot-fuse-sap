@@ -18,8 +18,10 @@
         <camel.version>2.21.2</camel.version>
         <camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
 
-        <!-- fusesource version -->
+        <!-- fusesource version 
         <fusesource-version>7.6.0.fuse-760024-redhat-00001</fusesource-version>
+        -->
+        <fusesource-version>7.6.0.fuse-sb2-760029-redhat-00001</fusesource-version>
 
         <!-- sap jco and jIDoc version -->
         <sapjco3-version>3.1.2</sapjco3-version>
@@ -121,34 +123,65 @@
         </dependency>
 
         <!-- Sap -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.fusesource</groupId>
             <artifactId>camel-sap</artifactId>
             <version>${fusesource-version}</version>
-        </dependency>
-        <dependency>
+            <scope>compile</scope>
+            <exclusions>
+              <exclusion>  
+                <groupId>com.sap.conn.jco</groupId>
+                <artifactId>sapjco3</artifactId>
+              </exclusion>
+              <exclusion>  
+                <groupId>com.sap.conn.idoc</groupId>
+                <artifactId>sapidoc3</artifactId>
+              </exclusion>
+            </exclusions>
+        </dependency>-->
+      <!--  <dependency>
             <groupId>org.fusesource</groupId>
             <artifactId>camel-sap-starter</artifactId>
             <version>${fusesource-version}</version>
-        </dependency>
+            <scope>compile</scope>
+            <exclusions>
+              <exclusion>  
+                <groupId>com.sap.conn.jco</groupId>
+                <artifactId>sapjco3</artifactId>
+              </exclusion>
+              <exclusion>  
+                <groupId>com.sap.conn.idoc</groupId>
+                <artifactId>sapidoc3</artifactId>
+              </exclusion>
+            </exclusions>
+        </dependency>   --> 
+        
+        <!-- https://mvnrepository.com/artifact/com.sap.conn.jco/sapjco3 
+        <dependency>
+            <groupId>com.sap.conn.jco</groupId>
+            <artifactId>sapjco3</artifactId>
+            <version>3.0.14</version>
+            <scope>test</scope>
+        </dependency>-->
+        
 
         <dependency>
             <groupId>com.sap.conn.jco</groupId>
             <artifactId>sapjco3</artifactId>
             <version>${sapjco3-version}</version>
             <type>jar</type>
-           <scope>system</scope> 
-             <systemPath>${basedir}/src/main/resources/lib/sapjco3.jar</systemPath>
+            <scope>system</scope> 
+            <systemPath>${basedir}/src/main/resources/sapjco3.jar</systemPath>
         </dependency>
-
+ <!--
          <dependency>
             <groupId>com.sap.conn.idoc</groupId>
             <artifactId>sapidoc3</artifactId>
             <version>${sapidoc3-version}</version>
             <type>jar</type>
-             <scope>system</scope>
-           <systemPath>${basedir}/src/main/resources/lib/sapidoc3.jar</systemPath>
-        </dependency> 
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/sapidoc3.jar</systemPath>
+        </dependency>  -->
 
         <!-- Test -->
         <dependency>
@@ -189,10 +222,15 @@
             <version>2.3.2</version>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.2</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+            <version>2.21.0.fuse-710018-redhat-00001</version>
         </dependency>
 
 
@@ -202,7 +240,7 @@
         <defaultGoal>spring-boot:run</defaultGoal>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>${basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
             <resource>
@@ -224,7 +262,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+           <!--  <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
                 <version>${maven-surefire-plugin.version}</version>
@@ -235,7 +273,7 @@
                         <exclude>**/*KT.java</exclude>
                     </excludes>
                 </configuration>
-            </plugin>
+            </plugin> -->
 
             <plugin>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -246,46 +284,94 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <configuration>
+                       <!--  <configuration>
                             <includeSystemScope>true</includeSystemScope>
-                            <!-- <excludes>
-                                <exclude>
-                                  <groupId>com.sap.conn.jco</groupId>
-                                  <artifactId>sapjco3</artifactId>
-                                </exclude>
-                                <exclude>
-                                  <groupId>com.sap.conn.idoc</groupId>
-                                  <artifactId>sapidoc3</artifactId>
-                                </exclude>
-                            </excludes> -->
-                        </configuration> 
+                        </configuration>  -->
                     </execution>
                 </executions>
             </plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            
+			<plugin>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-maven-plugin</artifactId>
+                <version>${camel-maven-plugin-version}</version>
+			</plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                   <archive>
-                    <manifest>
-                      <addClasspath>true</addClasspath>
-                      <classpathPrefix>lib/</classpathPrefix>
-                      <classpathLayoutType>repository</classpathLayoutType>
-                    </manifest>
+                    <manifestEntries>
+                        <Build-By>me</Build-By>
+                        <Class-Path>${basedir}/src/main/resources/sapjco3.jar</Class-Path>
+                    </manifestEntries>
                   </archive>
                 </configuration>
               </plugin>
 
             <plugin>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <executions>
+                            <!-- <execution>
+                                <phase>build-classpath</phase>
+                                <goals>
+                                    <goal>build-classpath</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.sap.conn.jco</groupId>
+                                            <artifactId>sapjco3</artifactId>
+                                            <version>${sapjco3-version}</version>
+                                            <type>jar</type>
+                                            <outputDirectory>${basedir}/src/main/resources</outputDirectory>
+                                            <stripVersion>true</stripVersion>              
+                                           </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution> 
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>src/main/resources/</outputDirectory>
+                                </configuration>
+                            </execution>-->
+                        </executions>
+                    </plugin> 
+
+           <!--  <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
                 <version>${camel-maven-plugin-version}</version>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 
-    <profiles>
+  <!--   <profiles>
         <profile>
             <id>openshift</id>
             <build>
@@ -303,27 +389,27 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> -->
 
-                    <plugin>
+                    <!-- <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <version>3.1.2</version>
                         <executions>
                             <execution>
-                                <phase>prepare-package</phase>
+                                <phase>build-classpath</phase>
                                 <goals>
-                                    <goal>copy</goal>
+                                    <goal>build-classpath</goal>
                                 </goals>
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
                                             <groupId>com.sap.conn.jco</groupId>
                                             <artifactId>sapjco3</artifactId>
-                                            <version>3.0.14</version>
+                                            <version>${sapjco3-version}</version>
                                             <type>jar</type>
-                                            <outputDirectory>${basedir}/src/main/resources/lib/</outputDirectory>
-                                            <!-- <stripVersion>true</stripVersion>                     -->
+                                            <outputDirectory>${basedir}/src/main/resources</outputDirectory>
+                                            <stripVersion>true</stripVersion>                     
                                             <destFileName>sapjco3.jar</destFileName>
                                            </artifactItem>
                                         <artifactItem>
@@ -332,18 +418,18 @@
                                             <version>3.0.12</version>
                                             <type>jar</type>
                                             <outputDirectory>${basedir}/src/main/resources/lib/</outputDirectory>
-                                            <!-- <stripVersion>true</stripVersion>                      -->
+                                            <stripVersion>true</stripVersion>                      
                                             <destFileName>sapidoc3.jar</destFileName>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> 
 
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles>-->
 
 </project>
