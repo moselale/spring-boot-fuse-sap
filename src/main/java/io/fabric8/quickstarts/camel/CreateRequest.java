@@ -15,10 +15,10 @@
  * 
  */
 package io.fabric8.quickstarts.camel;
-/* 
+ 
 import org.apache.camel.Exchange;
 import org.fusesource.camel.component.sap.SapSynchronousRfcDestinationEndpoint;
-import org.fusesource.camel.component.sap.model.rfc.Structure; */
+import org.fusesource.camel.component.sap.model.rfc.Structure; 
 
 /**
  * A {@link CreateRequest} is a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
@@ -29,7 +29,7 @@ import org.fusesource.camel.component.sap.model.rfc.Structure; */
  */
 public class CreateRequest {
 
-	/*public void createRequest(Exchange exchange) throws Exception {
+	public void createRequest(Exchange exchange) throws Exception {
 
 		 SapSynchronousRfcDestinationEndpoint endpoint = exchange.getContext().getEndpoint("sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST", SapSynchronousRfcDestinationEndpoint.class);
 		Structure request = endpoint.createRequest();
@@ -39,6 +39,6 @@ public class CreateRequest {
 		request.put("WEB_USER", "*");
 		
 		exchange.getIn().setBody(request); 
-	}*/
+	}
 
 }

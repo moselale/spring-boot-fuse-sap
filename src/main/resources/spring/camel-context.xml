@@ -14,7 +14,7 @@
             <setBody><simple>Hello World from camel-context.xml2</simple></setBody>
             <log message=">>> ${body}"/>
         </route>
-		<!-- <route>
+		<route>
 	        <from uri="timer://foo?period=10000"/>
 		    <to uri="bean:request"/>
 	        <log message="${body}" loggingLevel="INFO"/>
@@ -22,24 +22,24 @@
 	        <log message="${body}" loggingLevel="INFO"/>
 	        
 	        
-	    </route>  -->
+	    </route> 
     </camelContext>
     
 	<!-- Instantiates a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
-	 	 and sets that request in the body of the exchange's message.  	
-    <bean id="request" class="io.fabric8.quickstarts.camel.CreateRequest"/>-->
+	 	 and sets that request in the body of the exchange's message.  	-->
+    <bean id="request" class="io.fabric8.quickstarts.camel.CreateRequest"/>
     
-    <!-- Configures the Inbound and Outbound SAP Connections 
-    <bean id="sap-configuration"
+    <!-- Configures the Inbound and Outbound SAP Connections -->
+   <!--  <bean id="sap-configuration"
         class="org.fusesource.camel.component.sap.SapConnectionConfiguration">
         <property name="destinationDataStore">
             <map>
                 <entry key="quickstartDest" value-ref="quickstartDestinationData" />
             </map>
         </property>
-    </bean>-->
-    <!-- Configures an Outbound SAP Connection -->
-    <!-- *** Please enter the connection property values for your environment *** 
+    </bean>
+    Configures an Outbound SAP Connection
+    *** Please enter the connection property values for your environment ***
     <bean id="quickstartDestinationData"
         class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
         <property name="ashost" value="172.28.3.26" />
@@ -48,5 +48,5 @@
         <property name="user" value="sviluppo" />
         <property name="passwd" value="pocredhat2020" />
         <property name="lang" value="IT" />
-    </bean>-->
+    </bean> -->
 </beans>
