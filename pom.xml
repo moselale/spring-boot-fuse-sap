@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring-boot.version>1.5.8.RELEASE</spring-boot.version>
+		<spring-boot.version>2.5.12</spring-boot.version>
 		<camel.version>2.21.0</camel.version>
 		<camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
 
